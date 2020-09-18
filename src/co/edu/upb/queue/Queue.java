@@ -96,7 +96,17 @@ public class Queue implements QueueInterface{
 
     @Override
     public void reverse() {
-        //todo
+        Object[] colaAinvertir = new Object[this.size];
+        QueueNode node = this.head;
+        for (int i = 0; i <this.size ; i++) {
+            colaAinvertir[i] = node.getObject();
+            node = node.next;
+        }
+        Queue temp = new Queue();
+        for (int i = colaAinvertir.length-1; i >= 0; i--) {
+            temp.insert(colaAinvertir[i]);
+        }
+        this.head = temp.head;
     }
 
     @Override
