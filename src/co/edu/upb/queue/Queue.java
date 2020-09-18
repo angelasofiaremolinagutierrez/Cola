@@ -29,26 +29,46 @@ public class Queue implements QueueInterface{
 
     @Override
     public Object extract() {
-        //todo
-
-        return null;
+        if(isEmpty()){
+            return null;
+        }else{
+            Object oldHead = this.head.getObject();
+            this.head = this.head.next;
+            this.size = this.size-1;
+            return oldHead;
+        }
     }
 
     @Override
     public boolean insert(Object object) {
-        //todo
-        return false;
+        QueueNode newNode = new QueueNode(object);
+        if(isEmpty()){
+            this.head = newNode;
+            this.tail = this.head;
+        }else{
+            this.tail.next = newNode;
+            this.tail = this.tail.next;
+        }
+        this.size = this.size+1;
+        return true;
     }
 
     @Override
     public int size() {
-        //todo
-        return 0;
+        return this.size;
     }
 
     @Override
     public boolean search(Object object) {
-        //todo
+        if (!isEmpty()) {
+            QueueNode node = this.head;
+            for (int i = 0; i < this.size; i++) {
+                if (node.getObject().equals(object)) {
+                    return true;
+                }
+                node = node.next;
+            }
+        }
         return false;
     }
 
@@ -60,5 +80,13 @@ public class Queue implements QueueInterface{
     @Override
     public void reverse() {
         //todo
+    }
+
+    @Override
+    public String toString() {
+        return "Queue{" +
+                "head=" + head +
+                ", size=" + size +
+                '}';
     }
 }
