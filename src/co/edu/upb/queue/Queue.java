@@ -1,5 +1,7 @@
 package co.edu.upb.queue;
 
+import java.util.Arrays;
+
 public class Queue implements QueueInterface{
 
     public QueueNode head;
@@ -74,7 +76,22 @@ public class Queue implements QueueInterface{
 
     @Override
     public void sort() {
-        //todo
+        Object[] colaAOrdenar = new Object[this.size];
+        QueueNode node = this.head;
+        for (int i = 0; i <this.size ; i++) {
+            colaAOrdenar[i] = node.getObject();
+            node = node.next;
+        }
+
+        Arrays.sort(colaAOrdenar);
+
+        Queue colaOrdenada = new Queue();
+        for (Object n:colaAOrdenar) {
+            colaOrdenada.insert(n);
+        }
+
+        this.head = colaOrdenada.head;
+        this.tail = colaOrdenada.tail;
     }
 
     @Override
