@@ -11,5 +11,9 @@ public class Main {
         System.out.println(cola.toString());
         cola.reverse();
         System.out.println(cola.toString());
+
+        Queue[] array = new Queue[2];
+        
+
     }
 }
